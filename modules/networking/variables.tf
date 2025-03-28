@@ -1,37 +1,37 @@
 variable "rg-name" {
-  type = string
+  type    = string
 }
 
 
 variable "location" {
-  type = string
+  type    = string
   default = "westus"
 }
 
 variable "hub-vnet-name" {
-  type = string
+  type    = string
   default = "hub-vnet-001"
 
 }
 
 variable "spoke-vnet-name" {
-  type = string
+  type    = string
   default = "spoke-vnet-001"
 }
 
 variable "ApplicationGatewaySubnet-001" {
-  type = string
+  type    = string
   default = "ApplicationGatewaySubnet"
 }
 
 variable "spoke-subnet-001" {
-  type = string
+  type    = string
   default = "funcapp-subnet"
 
 }
 
 variable "spoke-subnet-002" {
-  type = string
+  type    = string
   default = "PrivateEndpointSubnet-001"
 }
 
