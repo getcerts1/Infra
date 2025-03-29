@@ -19,7 +19,7 @@ variable "spoke-vnet-name" {
   default = "spoke-vnet-001"
 }
 
-variable "ApplicationGatewaySubnet-001" {
+variable "hub-subnet-001" {
   type    = string
   default = "ApplicationGatewaySubnet"
 }

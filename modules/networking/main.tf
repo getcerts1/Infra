@@ -7,7 +7,7 @@ resource "azurerm_virtual_network" "hub-vnet" {
 
 resource "azurerm_subnet" "app-gw-subnet" {
   address_prefixes     = ["10.0.0.0/24"]
-  name                 = var.ApplicationGatewaySubnet-001
+  name                 = var.hub-subnet-001
   resource_group_name  = var.rg-name
   virtual_network_name = azurerm_virtual_network.hub-vnet.name
 }
@@ -40,3 +40,5 @@ resource "azurerm_virtual_network_peering" "peering-connection" {
   resource_group_name       = var.rg-name
   virtual_network_name      = azurerm_virtual_network.hub-vnet.name
 }
+
+
