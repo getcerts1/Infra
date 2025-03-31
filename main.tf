@@ -5,14 +5,14 @@ resource "azurerm_resource_group" "infra-rg" {
 
 
 module "function_app" {
-  source = "./modules/function_app"
-  rg-name = var.rg-name
-  location = var.location
-  subnet_id = module.networking.private_endpoint_subnet_id
+  source        = "./modules/function_app"
+  rg-name       = azurerm_resource_group.infra-rg.name
+  location      = var.location
+  subnet_id     = module.networking.private_endpoint_subnet_id
   spoke_vnet_id = module.networking.spoke_vnet_id
 }
 
 module "networking" {
-  source = "./modules/networking"
-  rg-name = var.rg-name  # Pass the variable to the module
+  source  = "./modules/networking"
+  rg-name = azurerm_resource_group.infra-rg.name
 }

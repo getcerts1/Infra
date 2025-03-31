@@ -1,13 +1,6 @@
-resource "azurerm_linux_function_app" "function-app" {
-  location = ""
-  name     = ""
-  resource_group_name = ""
-  service_plan_id = ""
-}
-
 #storage dependency for function app
 resource "azurerm_storage_account" "storage" {
-  name                     = "funcappstorageinstance001"
+  name                     = "funcappstrinstance001"
   resource_group_name      = var.rg-name
   location                 = var.location
   account_tier             = "Standard"
@@ -24,7 +17,7 @@ resource "azurerm_service_plan" "service-plan-001" {
 }
 
 #function app resource
-resource "azurerm_linux_function_app" "example" {
+resource "azurerm_linux_function_app" "function-app" {
   name                = "funcappinstance001"
   resource_group_name = var.rg-name
   location            = var.location
@@ -58,10 +51,11 @@ resource "azurerm_private_endpoint" "private-endpoint" {
     name                           = "funcprivateserviceconnection-001"
     private_connection_resource_id = azurerm_linux_function_app.function-app.id
     is_manual_connection           = false
+    subresource_names              = ["sites"]
   }
 
   private_dns_zone_group {
-    name                 = "example-dns-zone-group"
+    name                 = "my-dns-zone-group"
     private_dns_zone_ids = [azurerm_private_dns_zone.private-dns.id]
   }
 }
